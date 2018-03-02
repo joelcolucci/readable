@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Route } from 'react-router-dom';
+
+import DefaultView from './views/DefaultView';
+import PostsEditorView from './views/PostsEditorView';
 
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
-      <div>
-        Hello World
+      <div className="app">
+        <Route exact path="/" component={DefaultView} />
+        <Route exact path="/posts/create" component={PostsEditorView} />
       </div>
     );
   }
