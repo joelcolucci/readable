@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import uuid from 'uuid/v4';
+
+import { createPost } from './actions';
 
 
 class PostsForm extends Component {
@@ -12,6 +16,7 @@ class PostsForm extends Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange(event) {
@@ -23,25 +28,47 @@ class PostsForm extends Component {
     });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+
+    let post = {
+      id: uuid(),
+      title: this.state.title,
+      author: this.state.author,
+      body: this.state.body
+    };
+
+    this.setState({
+      title: '',
+      body: '',
+      author: ''
+    });
+
+    this.props.dispatch(createPost(post));
+  }
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input
           type="text"
           name="title"
           placeholder="title"
+          value={this.state.title}
           onChange={this.handleInputChange} />
 
         <input
           type="text"
           name="body"
           placeholder="body"
+          value={this.state.body}
           onChange={this.handleInputChange} />
 
         <input
           type="text"
           name="author"
           placeholder="author"
+          value={this.state.author}
           onChange={this.handleInputChange} />
 
         <select>
@@ -55,4 +82,4 @@ class PostsForm extends Component {
 }
 
 
-export default PostsForm;
+export default connect()(PostsForm);
