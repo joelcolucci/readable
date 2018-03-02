@@ -1,5 +1,26 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 40px;
   font-family: sans-serif;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+}
+
+.header > *:first-child {
+  flex-grow: 1;
+}
+
+.logo {
+  font-size: 18px;
+}
+
+.nav {
+
+}
+
+.nav-item {
+
 }

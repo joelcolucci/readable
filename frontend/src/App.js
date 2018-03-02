@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+import Header from './header';
 import PostsForm from './posts/PostsForm';
 
 
@@ -10,13 +11,17 @@ class App extends React.Component {
       <div className="app">
         <Route exact path="/" render={() => {
           return (
-            <h2>Default view</h2>
+            <div>
+              <Header />
+              <h2>Default view</h2>
+            </div>
           );
         }} />
 
         <Route exact path="/posts/create" render={() => {
           return (
             <div>
+              <Header />
               <h2>Posts editor</h2>
               <PostsForm />
             </div>
