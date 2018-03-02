@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 import Header from './header';
 import PostsForm from './posts/PostsForm';
+import PostsList from './posts/PostsList';
 
 
 class App extends React.Component {
@@ -13,7 +14,8 @@ class App extends React.Component {
           return (
             <div>
               <Header />
-              <h2>Default view</h2>
+              <h2>Most recent posts</h2>
+              <PostsList />
             </div>
           );
         }} />
