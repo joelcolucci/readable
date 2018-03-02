@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import Header from './header';
-import PostsForm from './posts/PostsForm';
-import PostsList from './posts/PostsList';
+import Header from './components/Header';
+import PostsForm from './components/PostsForm';
+import PostsList from './components/PostsList';
 
 
 class App extends React.Component {

@@ -1,4 +1,4 @@
-import { CREATE_POST } from './actions';
+import { CREATE_POST } from '../actions/postActions';
 
 
 const initialState = {
@@ -23,6 +23,4 @@ function postsReducer(previousState=initialState, action) {
 }
 
 
-export {
-  postsReducer
-};
+export default postsReducer;

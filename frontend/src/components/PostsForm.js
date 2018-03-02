@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
 
-import { createPost } from './actions';
+import { createPost } from '../actions/postActions';
 
 
 class PostsForm extends Component {

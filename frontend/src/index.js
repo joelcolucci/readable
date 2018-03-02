@@ -5,13 +5,13 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import App from './App';
-import { postsReducer } from './posts/reducer';
+import rootReducer from './reducers';
 
 import './index.css';
 
 
 const store = createStore(
-  postsReducer,
+  rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

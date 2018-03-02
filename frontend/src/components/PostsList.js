@@ -20,9 +20,10 @@ function PostsList(props) {
 
 
 function mapStateToProps(state) {
+  let { postsReducer } = state;
   return {
-    posts: Object.keys(state.postsById).map((key) => {
-      return {...state.postsById[key]};
+    posts: Object.keys(postsReducer.postsById).map((key) => {
+      return {...postsReducer.postsById[key]};
     })
   };
 }
