@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
 
-import { createPost } from '../actions/postActions';
+import { postCreate } from '../actions/postActions';
 
 
 class PostsForm extends Component {
@@ -44,7 +44,7 @@ class PostsForm extends Component {
       author: ''
     });
 
-    this.props.dispatch(createPost(post));
+    this.props.dispatch(postCreate(post));
   }
 
   render() {

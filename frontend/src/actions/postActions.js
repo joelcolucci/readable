@@ -1,15 +1,27 @@
-const CREATE_POST = 'CREATE_POST';
+import * as PostsAPI from '../utilities/PostsAPI';
+
+const POST_CREATED = 'POST_CREATED';
 
 
-function createPost(post) {
+function postCreated(post) {
   return {
-    type: CREATE_POST,
+    type: POST_CREATED,
     post: post
+  };
+}
+
+function postCreate(post) {
+  return (dispatch) => {
+    return PostsAPI
+      .create(post)
+      .then((post) => {
+        dispatch(postCreated(post));
+      });
   };
 }
 
 
 export {
-  CREATE_POST,
-  createPost
+  POST_CREATED,
+  postCreate
 };
