@@ -1,4 +1,4 @@
-import { POST_CREATED } from '../actions/postActions';
+import { POST_CREATED, POSTS_RECEIVE } from '../actions/postActions';
 
 
 const initialState = {
@@ -17,6 +17,18 @@ function postsReducer(previousState=initialState, action) {
           [post.id]: post
         }
       };
+
+    case POSTS_RECEIVE:
+      let postsById = action.posts.reduce((accumulator, item) => {
+        accumulator[item.id] = {...item};
+        return accumulator;
+      }, {});
+
+      return {
+        ...previousState,
+        postsById: postsById
+      };
+
     default:
       return previousState;
   }
