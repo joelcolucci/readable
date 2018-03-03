@@ -35,6 +35,21 @@ function create(body) {
 
 /**
  *
+ * @return {Promise}
+ */
+function getAll() {
+  let endpoint = `${api}/posts`;
+  let options = {
+    headers
+  };
+
+  return fetch(endpoint, options)
+    .then((response) => response.json());
+}
+
+
+/**
+ *
  * @param {Object} post
  * @return {Promise}
  */
@@ -49,21 +64,6 @@ function get(post) {
 
   return fetch(endpoint, options)
     .then((response) => response.json());
-}
-
-/**
- *
- * @return {Promise}
- */
-function getAll() {
-  let endpoint = `${api}/posts`;
-  let options = {
-    headers
-  };
-
-  return fetch(endpoint, options)
-    .then((response) => response.json())
-    .then((data) => data.contacts);
 }
 
 
