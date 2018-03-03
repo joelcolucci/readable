@@ -5,7 +5,7 @@ import uuid from 'uuid/v4';
 import { postCreate } from '../actions/postActions';
 
 
-class PostsForm extends Component {
+class PostForm extends Component {
   constructor(props) {
     super(props);
 
@@ -82,4 +82,4 @@ class PostsForm extends Component {
 }
 
 
-export default connect()(PostsForm);
+export default connect()(PostForm);

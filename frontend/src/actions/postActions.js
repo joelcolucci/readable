@@ -1,4 +1,4 @@
-import * as PostsAPI from '../utilities/PostsAPI';
+import * as PostAPI from '../utilities/PostAPI';
 
 const POST_CREATED = 'POST_CREATED';
 const POSTS_RECEIVE = 'POSTS_RECEIVE';
@@ -13,7 +13,7 @@ function postCreated(post) {
 
 function postCreate(post) {
   return (dispatch) => {
-    return PostsAPI
+    return PostAPI
       .create(post)
       .then((post) => {
         dispatch(postCreated(post));
@@ -23,7 +23,7 @@ function postCreate(post) {
 
 function fetchPosts() {
   return (dispatch) => {
-    return PostsAPI
+    return PostAPI
       .getAll()
       .then((posts) =>{
         dispatch(receivePosts(posts));

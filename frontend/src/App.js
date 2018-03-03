@@ -2,8 +2,8 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import Header from './components/Header';
-import PostsForm from './components/PostsForm';
-import PostsList from './components/PostsList';
+import PostForm from './components/PostForm';
+import PostList from './components/PostList';
 
 
 class App extends React.Component {
@@ -15,7 +15,7 @@ class App extends React.Component {
             <div>
               <Header />
               <h2>Most recent posts</h2>
-              <PostsList />
+              <PostList />
             </div>
           );
         }} />
@@ -25,7 +25,7 @@ class App extends React.Component {
             <div>
               <Header />
               <h2>Posts editor</h2>
-              <PostsForm />
+              <PostForm />
             </div>
           );
         }} />

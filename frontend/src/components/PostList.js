@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/postActions';
 
 
-class PostsList extends React.Component {
+class PostList extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
   }
 
   render() {
     return (
-      <div className="postslist">
+      <div className="postlist">
         {this.props.posts.map((item) => {
           return (
             <article key={item.id}>
@@ -37,4 +37,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(PostsList);
+export default connect(mapStateToProps)(PostList);
