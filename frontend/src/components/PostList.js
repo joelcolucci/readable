@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchPosts } from '../actions/postActions';
+import { readAllPosts } from '../actions/postActions';
 
 
 class PostList extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchPosts());
+    this.props.dispatch(readAllPosts());
   }
 
   render() {

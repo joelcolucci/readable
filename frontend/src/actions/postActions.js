@@ -1,48 +1,61 @@
 import * as PostAPI from '../utilities/PostAPI';
 
-const POST_CREATED = 'POST_CREATED';
-const POSTS_RECEIVE = 'POSTS_RECEIVE';
 
+/** CREATE */
+export const POST_CREATE_REQUEST = 'POST_CREATE_REQUEST';
+export const POST_CREATE_ERROR = 'POST_CREATE_ERROR';
+export const POST_CREATE_SUCCESS = 'POST_CREATE_SUCCESS';
 
-function postCreated(post) {
+export const postCreateRequest = () => {
   return {
-    type: POST_CREATED,
-    post: post
+    type: POST_CREATE_REQUEST,
+    category: ''
   };
-}
+};
 
-function postCreate(post) {
+export const postCreateError = () => {
+  return {
+    type: POST_CREATE_ERROR
+  };
+};
+
+export const postCreateSuccess = (post) => {
+  return {
+    type: POST_CREATE_SUCCESS,
+    post
+  };
+};
+
+export const createPost = (post) => {
   return (dispatch) => {
+    dispatch(postCreateRequest());
+
     return PostAPI
       .create(post)
       .then((post) => {
-        dispatch(postCreated(post));
+        dispatch(postCreateSuccess(post));
       });
   };
-}
+};
 
-function fetchPosts() {
+/** READ ALL */
+export const POST_READ_ALL_REQUEST = 'POST_READ_ALL_REQUEST';
+export const POST_READ_ALL_ERROR = 'POST_READ_ALL_ERROR';
+export const POST_READ_ALL_SUCCESS = 'POST_READ_ALL_SUCCESS';
+
+export const readAllPosts = () => {
   return (dispatch) => {
     return PostAPI
       .getAll()
       .then((posts) =>{
-        dispatch(receivePosts(posts));
+        dispatch(postReadAllSuccess(posts));
       });
   };
-}
+};
 
-function receivePosts(posts) {
+export const postReadAllSuccess= (posts) => {
   return {
-    type: POSTS_RECEIVE,
+    type: POST_READ_ALL_SUCCESS,
     posts: posts
   };
-}
-
-
-export {
-  POST_CREATED,
-  postCreate,
-  fetchPosts,
-  receivePosts,
-  POSTS_RECEIVE
 };
