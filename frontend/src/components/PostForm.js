@@ -50,9 +50,11 @@ class PostForm extends Component {
 
     let post = {
       id: this.state.postId,
+      timestamp: Date.now(),
       title: this.state.title,
       author: this.state.author,
-      body: this.state.body
+      body: this.state.body,
+      category: 'react'
     };
 
     this.setState({
