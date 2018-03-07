@@ -67,19 +67,18 @@ function get(postId) {
 
 /**
  *
- * @param {Object} post
+ * @param {Object} postId
  * @return {Promise}
  */
-function remove(post) {
-  let endpoint = `${api}/posts/${post.id}`;
+function remove(postId) {
+  let endpoint = `${api}/posts/${postId}`;
   let options = {
     method: 'DELETE',
     headers
   };
 
   return fetch(endpoint, options)
-    .then((response) => response.json())
-    .then((data) => data.contact);
+    .then((response) => response.json());
  }
 
 

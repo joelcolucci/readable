@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { readAllPosts } from '../actions/postActions';
 
+import PostDeleteButton from './PostDeleteButton';
+
 
 class PostList extends React.Component {
   componentDidMount() {
@@ -19,6 +21,7 @@ class PostList extends React.Component {
               <h2>{item.title}</h2>
               <p>Written by: {item.author}</p>
               <Link to={`/posts/${item.id}`}>Edit</Link>
+              <PostDeleteButton postId={item.id} />
               <p>{item.body}</p>
             </article>
           );
@@ -35,6 +38,7 @@ function mapStateToProps(state) {
     posts: Object.keys(postsReducer.postsById).map((key) => {
       return {...postsReducer.postsById[key]};
     })
+    .filter((elem) => elem.deleted === false)
   };
 }
 

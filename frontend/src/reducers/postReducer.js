@@ -7,7 +7,10 @@ import {
   POST_READ_ALL_SUCCESS,
   POST_READ_REQUEST,
   POST_READ_ERROR,
-  POST_READ_SUCCESS
+  POST_READ_SUCCESS,
+  POST_DELETE_REQUEST,
+  POST_DELETE_ERROR,
+  POST_DELETE_SUCCESS
 } from '../actions/postActions';
 
 
@@ -89,6 +92,31 @@ function postsReducer(previousState=initialState, action) {
         }
       };
     }
+
+    case POST_DELETE_REQUEST:
+      return {
+        ...previousState,
+        isFetching: true
+      };
+
+    case POST_DELETE_ERROR:
+      return {
+        ...previousState,
+        isFetching: false
+      };
+
+    case POST_DELETE_SUCCESS: {
+        // This is not a hard delete so we can just update the post
+        // flag
+        let post = action.post;
+        return {
+          ...previousState,
+          postsById: {
+            ...previousState.postsById,
+            [post.id]: post
+          }
+        };
+      }
 
     default:
       return previousState;

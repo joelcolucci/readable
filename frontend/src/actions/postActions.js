@@ -111,3 +111,40 @@ export const readPost = (postId) => {
       });
   };
 };
+
+
+/** DELETE */
+export const POST_DELETE_REQUEST = 'POST_DELETE_REQUEST';
+export const POST_DELETE_ERROR = 'POST_DELETE_REQUEST';
+export const POST_DELETE_SUCCESS = 'POST_DELETE_SUCCESS';
+
+export const postDeleteRequest = () => {
+  return {
+    type: POST_DELETE_REQUEST
+  };
+};
+
+export const postDeleteError = () => {
+  return {
+    type: POST_DELETE_ERROR
+  };
+};
+
+export const postDeleteSuccess = (post) => {
+  return {
+    type: POST_DELETE_SUCCESS,
+    post
+  };
+};
+
+export const deletePost = (postId) => {
+  return (dispatch) => {
+    dispatch(postDeleteRequest());
+
+    return PostAPI
+      .remove(postId)
+      .then((post) => {
+        dispatch(postDeleteSuccess(post));
+      });
+  };
+};
