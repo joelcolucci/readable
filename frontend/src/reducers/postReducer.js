@@ -13,7 +13,10 @@ import {
   POST_DELETE_SUCCESS,
   POST_UPDATE_REQUEST,
   POST_UPDATE_ERROR,
-  POST_UPDATE_SUCCESS
+  POST_UPDATE_SUCCESS,
+  POST_VOTE_REQUEST,
+  POST_VOTE_ERROR,
+  POST_VOTE_SUCCESS
 } from '../actions/postActions';
 
 
@@ -132,6 +135,29 @@ function postsReducer(previousState=initialState, action) {
       };
 
     case POST_DELETE_SUCCESS: {
+        let post = action.post;
+        return {
+          ...previousState,
+          postsById: {
+            ...previousState.postsById,
+            [post.id]: post
+          }
+        };
+      }
+
+    case POST_VOTE_REQUEST:
+      return {
+        ...previousState,
+        isFetching: true
+      };
+
+    case POST_VOTE_ERROR:
+      return {
+        ...previousState,
+        isFetching: false
+      };
+
+    case POST_VOTE_SUCCESS: {
         let post = action.post;
         return {
           ...previousState,

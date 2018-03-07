@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { readAllPosts } from '../actions/postActions';
 
 import PostDeleteButton from './PostDeleteButton';
+import PostVoteCounter from './PostVoteCounter';
 
 
 class PostList extends React.Component {
@@ -22,6 +23,7 @@ class PostList extends React.Component {
               <p>Written by: {item.author}</p>
               <Link to={`/posts/${item.id}/update`}>Edit</Link>
               <PostDeleteButton postId={item.id} />
+              <PostVoteCounter postId={item.id} voteCount={item.voteScore} />
               <p>{item.body}</p>
             </article>
           );

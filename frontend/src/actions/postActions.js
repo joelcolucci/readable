@@ -184,3 +184,40 @@ export const deletePost = (postId) => {
       });
   };
 };
+
+
+/** VOTE */
+export const POST_VOTE_REQUEST = 'POST_VOTE_REQUEST';
+export const POST_VOTE_ERROR = 'POST_VOTE_REQUEST';
+export const POST_VOTE_SUCCESS = 'POST_VOTE_SUCCESS';
+
+export const postVoteRequest = () => {
+  return {
+    type: POST_VOTE_REQUEST
+  };
+};
+
+export const postVoteError = () => {
+  return {
+    type: POST_VOTE_ERROR
+  };
+};
+
+export const postVoteSuccess = (post) => {
+  return {
+    type: POST_VOTE_SUCCESS,
+    post
+  };
+};
+
+export const updateVoteScore = (vote) => {
+  return (dispatch) => {
+    dispatch(postVoteRequest());
+
+    return PostAPI
+      .updateVote(vote)
+      .then((post) => {
+        dispatch(postVoteSuccess(post));
+      });
+  };
+};

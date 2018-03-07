@@ -102,10 +102,31 @@ function remove(postId) {
  }
 
 
+/**
+ *
+ * @param {Object} body
+ * @return {Promise}
+ */
+function updateVote(body) {
+  let endpoint = `${api}/posts/${body.postId}`;
+  let options = {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  };
+
+  return fetch(endpoint, options)
+    .then((response) => response.json());
+}
+
 export {
   create,
   getAll,
   get,
   update,
-  remove
+  remove,
+  updateVote
 };
