@@ -64,6 +64,26 @@ function get(postId) {
     .then((response) => response.json());
 }
 
+/**
+ *
+ * @param {Object} postId
+ * @return {Promise}
+ */
+function update(body) {
+  let endpoint = `${api}/posts/${body.id}`;
+  let options = {
+    method: 'PUT',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  };
+
+  return fetch(endpoint, options)
+    .then((response) => response.json());
+ }
+
 
 /**
  *
@@ -86,5 +106,6 @@ export {
   create,
   getAll,
   get,
+  update,
   remove
 };
