@@ -20,7 +20,7 @@ class PostList extends React.Component {
             <article key={item.id}>
               <h2>{item.title}</h2>
               <p>Written by: {item.author}</p>
-              <Link to={`/posts/${item.id}`}>Edit</Link>
+              <Link to={`/posts/${item.id}/update`}>Edit</Link>
               <PostDeleteButton postId={item.id} />
               <p>{item.body}</p>
             </article>
