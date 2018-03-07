@@ -4,7 +4,10 @@ import {
   POST_CREATE_SUCCESS,
   POST_READ_ALL_REQUEST,
   POST_READ_ALL_ERROR,
-  POST_READ_ALL_SUCCESS
+  POST_READ_ALL_SUCCESS,
+  POST_READ_REQUEST,
+  POST_READ_ERROR,
+  POST_READ_SUCCESS
 } from '../actions/postActions';
 
 
@@ -40,16 +43,16 @@ function postsReducer(previousState=initialState, action) {
         }
       };
 
-    case POST_READ_ALL_ERROR:
-      return {
-        ...previousState,
-        isFetching: false
-      };
-
     case POST_READ_ALL_REQUEST:
       return {
         ...previousState,
         isFetching: true
+      };
+
+    case POST_READ_ALL_ERROR:
+      return {
+        ...previousState,
+        isFetching: false
       };
 
     case POST_READ_ALL_SUCCESS:
@@ -63,6 +66,29 @@ function postsReducer(previousState=initialState, action) {
         isFetching: false,
         postsById: postsById
       };
+
+    case POST_READ_REQUEST:
+      return {
+        ...previousState,
+        isFetching: true
+      };
+
+    case POST_READ_ERROR:
+      return {
+        ...previousState,
+        isFetching: false
+      };
+  
+    case POST_READ_SUCCESS: {
+      let post = action.post;
+      return {
+        ...previousState,
+        postsById: {
+          ...previousState.postsById,
+          [post.id]: post
+        }
+      };
+    }
 
     default:
       return previousState;

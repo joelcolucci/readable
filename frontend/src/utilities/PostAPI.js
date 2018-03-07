@@ -50,16 +50,14 @@ function getAll() {
 
 /**
  *
- * @param {Object} post
+ * @param {String} postId
  * @return {Promise}
  */
-function get(post) {
-  let endpoint = `${api}/posts${post.id}`;
+function get(postId) {
+  let endpoint = `${api}/posts/${postId}`;
   let options = {
     method: 'GET',
-    headers: {
-      headers
-    }
+    headers
   };
 
   return fetch(endpoint, options)

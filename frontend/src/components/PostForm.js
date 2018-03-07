@@ -2,21 +2,41 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
 
-import { createPost } from '../actions/postActions';
+import { createPost, readPost } from '../actions/postActions';
 
 
 class PostForm extends Component {
   constructor(props) {
     super(props);
 
+    // Intentionally forking props to allow for
+    // controlled component form values to be set
+    // with persisted data
     this.state = {
-      title: '',
-      body: '',
-      author: ''
+      postId: uuid(),
+      ...props
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    let postId = this.props.postId;
+    if (postId) {
+      this.props.dispatch(readPost(postId));
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // We have to set state in this lifecycle hook
+    // to handle when a user loads the form page
+    // directly as opposed to navigating through
+    // the app
+    this.setState({
+      postId: uuid(),
+      ...nextProps
+    });
   }
 
   handleInputChange(event) {
@@ -32,13 +52,14 @@ class PostForm extends Component {
     event.preventDefault();
 
     let post = {
-      id: uuid(),
+      id: this.state.postId,
       title: this.state.title,
       author: this.state.author,
       body: this.state.body
     };
 
     this.setState({
+      id: '',
       title: '',
       body: '',
       author: ''
@@ -50,6 +71,12 @@ class PostForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <input
+          type="hidden"
+          name="id"
+          value={this.state.postId}
+          onChange={this.handleInputChange} />
+
         <input
           type="text"
           name="title"
@@ -82,4 +109,16 @@ class PostForm extends Component {
 }
 
 
-export default connect()(PostForm);
+function mapStateToProps(state, ownProps) {
+  let { postsReducer } = state;
+  let post = postsReducer.postsById[ownProps.postId] || {};
+  return {
+    id: post.id,
+    title: post.title || '',
+    author: post.author || '',
+    body: post.body || ''
+  };
+}
+
+
+export default connect(mapStateToProps)(PostForm);

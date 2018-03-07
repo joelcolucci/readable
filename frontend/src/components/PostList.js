@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { readAllPosts } from '../actions/postActions';
 
@@ -17,6 +18,7 @@ class PostList extends React.Component {
             <article key={item.id}>
               <h2>{item.title}</h2>
               <p>Written by: {item.author}</p>
+              <Link to={`/posts/${item.id}`}>Edit</Link>
               <p>{item.body}</p>
             </article>
           );

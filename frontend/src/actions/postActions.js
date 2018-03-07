@@ -38,13 +38,35 @@ export const createPost = (post) => {
   };
 };
 
+
 /** READ ALL */
 export const POST_READ_ALL_REQUEST = 'POST_READ_ALL_REQUEST';
 export const POST_READ_ALL_ERROR = 'POST_READ_ALL_ERROR';
 export const POST_READ_ALL_SUCCESS = 'POST_READ_ALL_SUCCESS';
 
+export const postReadAllRequest = () => {
+  return {
+    type: POST_READ_ALL_REQUEST
+  };
+};
+
+export const postReadAllError = () => {
+  return {
+    type: POST_READ_ALL_ERROR
+  };
+};
+
+export const postReadAllSuccess = (posts) => {
+  return {
+    type: POST_READ_ALL_SUCCESS,
+    posts
+  };
+};
+
 export const readAllPosts = () => {
   return (dispatch) => {
+    dispatch(postReadAllRequest());
+
     return PostAPI
       .getAll()
       .then((posts) =>{
@@ -53,9 +75,39 @@ export const readAllPosts = () => {
   };
 };
 
-export const postReadAllSuccess= (posts) => {
+
+/** READ */
+export const POST_READ_REQUEST = 'POST_READ_REQUEST';
+export const POST_READ_ERROR = 'POST_READ_REQUEST';
+export const POST_READ_SUCCESS = 'POST_READ_SUCCESS';
+
+export const postReadRequest = () => {
   return {
-    type: POST_READ_ALL_SUCCESS,
-    posts: posts
+    type: POST_READ_REQUEST
+  };
+};
+
+export const postReadError = () => {
+  return {
+    type: POST_READ_ERROR
+  };
+};
+
+export const postReadSuccess = (post) => {
+  return {
+    type: POST_READ_SUCCESS,
+    post
+  };
+};
+
+export const readPost = (postId) => {
+  return (dispatch) => {
+    dispatch(postReadRequest());
+
+    return PostAPI
+      .get(postId)
+      .then((post) => {
+        dispatch(postReadSuccess(post));
+      });
   };
 };
