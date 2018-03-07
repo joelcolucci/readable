@@ -112,6 +112,42 @@ export const readPost = (postId) => {
   };
 };
 
+/** UPDATE */
+export const POST_UPDATE_REQUEST = 'POST_UPDATE_REQUEST';
+export const POST_UPDATE_ERROR = 'POST_UPDATE_REQUEST';
+export const POST_UPDATE_SUCCESS = 'POST_UPDATE_SUCCESS';
+
+export const postUpdateRequest = () => {
+  return {
+    type: POST_UPDATE_REQUEST
+  };
+};
+
+export const postUpdateError = () => {
+  return {
+    type: POST_UPDATE_ERROR
+  };
+};
+
+export const postUpdateSuccess = (post) => {
+  return {
+    type: POST_UPDATE_SUCCESS,
+    post
+  };
+};
+
+export const updatePost = (post) => {
+  return (dispatch) => {
+    dispatch(postUpdateRequest());
+
+    return PostAPI
+      .update(post)
+      .then((post) => {
+        dispatch(postUpdateSuccess(post));
+      });
+  };
+};
+
 
 /** DELETE */
 export const POST_DELETE_REQUEST = 'POST_DELETE_REQUEST';

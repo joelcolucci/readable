@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import PostForm from '../components/PostForm';
+import PostUpdateForm from '../components/PostUpdateForm';
 import { readPost } from '../actions/postActions';
 
 
@@ -17,7 +17,7 @@ class PostUpdatePage extends React.Component {
     return (
       <React.Fragment>
         <h2>Post Update Page</h2>
-        <PostForm post={this.props} />
+        <PostUpdateForm post={this.props} />
       </React.Fragment>
     );
   }
