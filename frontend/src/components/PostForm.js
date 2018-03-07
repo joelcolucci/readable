@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
 
-import { createPost, readPost } from '../actions/postActions';
+import { createPost } from '../actions/postActions';
 
 
 class PostForm extends Component {
@@ -14,18 +14,11 @@ class PostForm extends Component {
     // with persisted data
     this.state = {
       postId: uuid(),
-      ...props
+      ...props.post
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentDidMount() {
-    let postId = this.props.postId;
-    if (postId) {
-      this.props.dispatch(readPost(postId));
-    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -35,7 +28,7 @@ class PostForm extends Component {
     // the app
     this.setState({
       postId: uuid(),
-      ...nextProps
+      ...nextProps.post
     });
   }
 
@@ -109,16 +102,4 @@ class PostForm extends Component {
 }
 
 
-function mapStateToProps(state, ownProps) {
-  let { postsReducer } = state;
-  let post = postsReducer.postsById[ownProps.postId] || {};
-  return {
-    id: post.id,
-    title: post.title || '',
-    author: post.author || '',
-    body: post.body || ''
-  };
-}
-
-
-export default connect(mapStateToProps)(PostForm);
+export default connect()(PostForm);

@@ -5,6 +5,7 @@ import Header from './components/Header';
 import PostForm from './components/PostForm';
 import PostList from './components/PostList';
 import PostReadPage from './containers/PostReadPage';
+import PostUpdatePage from './containers/PostUpdatePage';
 
 
 class App extends React.Component {
@@ -35,11 +36,10 @@ class App extends React.Component {
           <Route path="/posts/:id/update" render={(props) => {
             let { match } = props;
             return (
-              <div>
+              <React.Fragment>
                 <Header />
-                <h2>Post {match.params.id}</h2>
-                <PostForm postId={match.params.id}/>
-              </div>
+                <PostUpdatePage postId={match.params.id}/>
+              </React.Fragment>
             );
           }} />
 
