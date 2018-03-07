@@ -9,31 +9,16 @@ class PostForm extends Component {
   constructor(props) {
     super(props);
 
-    // Intentionally forking props to allow for
-    // controlled component form values to be set
-    // with persisted data
-    let { id, title, body, author } = props.post || {};
-
     this.state = {
-      postId: id || uuid(),
-      title: title || '',
-      body: body || '',
-      author: author || ''
+      postId: uuid(),
+      title: '',
+      body: '',
+      author: '',
+      category: ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // We have to set state in this lifecycle hook
-    // to handle when a user loads the form page
-    // directly as opposed to navigating through
-    // the app
-    this.setState({
-      postId: uuid(),
-      ...nextProps.post
-    });
   }
 
   handleInputChange(event) {
@@ -54,7 +39,7 @@ class PostForm extends Component {
       title: this.state.title,
       author: this.state.author,
       body: this.state.body,
-      category: 'react'
+      category: this.state.category
     };
 
     this.setState({

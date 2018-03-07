@@ -2,8 +2,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Header from '../components/Header';
-import PostForm from '../components/PostForm';
 import PostList from '../components/PostList';
+
+import PostCreatePage from './PostCreatePage';
 import PostReadPage from './PostReadPage';
 import PostUpdatePage from './PostUpdatePage';
 
@@ -25,11 +26,10 @@ class App extends React.Component {
 
           <Route exact path="/posts/create" render={() => {
             return (
-              <div>
+              <React.Fragment>
                 <Header />
-                <h2>Posts editor</h2>
-                <PostForm />
-              </div>
+                <PostCreatePage />
+              </React.Fragment>
             );
           }} />
 
