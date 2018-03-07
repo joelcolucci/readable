@@ -1,8 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { readAllCategories } from '../actions/categoryActions';
 
 import Header from '../components/Header';
 import PostList from '../components/PostList';
+import CategoryList from '../components/CategoryList';
 
 import PostCreatePage from './PostCreatePage';
 import PostReadPage from './PostReadPage';
@@ -10,6 +14,10 @@ import PostUpdatePage from './PostUpdatePage';
 
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(readAllCategories());
+  }
+
   render() {
     return (
       <div className="app">
@@ -18,6 +26,7 @@ class App extends React.Component {
             return (
               <div>
                 <Header />
+                <CategoryList categories={this.props.categories}/>
                 <h2>Most recent posts</h2>
                 <PostList />
               </div>
@@ -59,4 +68,15 @@ class App extends React.Component {
 }
 
 
-export default App;
+function mapStateToProps(state, ownProps) {
+  let categories = state.categoryReducer.categories.map((elem) => {
+    return elem.name;
+  });
+
+  return {
+    categories: categories
+  };
+}
+
+
+export default connect(mapStateToProps)(App);
