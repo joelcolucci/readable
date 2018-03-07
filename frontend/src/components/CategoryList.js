@@ -9,7 +9,7 @@ function CategoryList(props) {
       {
         props.categories.map((category) => {
           return (
-            <Link key={category} to={`/${category}/posts`}>{category}</Link>
+            <Link key={category} to={`/${category}`}>{category}</Link>
           );
         })
       }
