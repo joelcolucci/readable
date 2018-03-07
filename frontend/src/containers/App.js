@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { readAllCategories } from '../actions/categoryActions';
@@ -78,5 +78,4 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));
