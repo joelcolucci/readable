@@ -12,9 +12,13 @@ class PostForm extends Component {
     // Intentionally forking props to allow for
     // controlled component form values to be set
     // with persisted data
+    let { id, title, body, author } = props.post || {};
+
     this.state = {
-      postId: uuid(),
-      ...props.post
+      postId: id || uuid(),
+      title: title || '',
+      body: body || '',
+      author: author || ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
