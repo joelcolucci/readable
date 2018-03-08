@@ -63,12 +63,12 @@ export const postReadAllSuccess = (posts) => {
   };
 };
 
-export const readAllPosts = () => {
+export const readAllPosts = (category) => {
   return (dispatch) => {
     dispatch(postReadAllRequest());
 
     return PostAPI
-      .getAll()
+      .getAll(category)
       .then((posts) =>{
         dispatch(postReadAllSuccess(posts));
       });

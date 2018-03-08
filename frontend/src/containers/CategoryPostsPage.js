@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getPostsByCategory } from '../actions/categoryActions';
+import { readAllPosts } from '../actions/postActions';
 
 import PostList from '../components/PostList';
 
@@ -9,13 +9,13 @@ import PostList from '../components/PostList';
 class CategoryPostsPage extends React.Component {
   componentDidMount() {
     let { category } = this.props;
-    this.props.dispatch(getPostsByCategory(category));
+    this.props.dispatch(readAllPosts(category));
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.category !== this.props.category) {
       let { category } = nextProps;
-      this.props.dispatch(getPostsByCategory(category));
+      this.props.dispatch(readAllPosts(category));
     }
   }
 
@@ -31,8 +31,12 @@ class CategoryPostsPage extends React.Component {
 
 
 function mapStateToProps(state, ownProps) {
+  let { postsReducer } = state;
   return {
-    posts: state.categoryReducer.postsByCategory
+    posts: Object.keys(postsReducer.postsById).map((key) => {
+      return {...postsReducer.postsById[key]};
+    })
+    .filter((elem) => elem.deleted === false)
   };
 }
 

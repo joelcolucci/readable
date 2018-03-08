@@ -28,23 +28,6 @@ function getAll() {
 }
 
 
-/**
- *
- * @param {String} category
- * @return {Promise}
- */
-function getPostsByCategory(category) {
-  let endpoint = `${api}/${category}/posts`;
-  let options = {
-    headers
-  };
-
-  return fetch(endpoint, options)
-    .then((response) => response.json());
-}
-
-
 export {
-  getAll,
-  getPostsByCategory
+  getAll
 };

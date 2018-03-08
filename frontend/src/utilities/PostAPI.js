@@ -37,8 +37,14 @@ function create(body) {
  *
  * @return {Promise}
  */
-function getAll() {
-  let endpoint = `${api}/posts`;
+function getAll(category) {
+  let endpoint;
+  if (category) {
+    endpoint = `${api}/${category}/posts`;
+  } else {
+    endpoint = `${api}/posts`;
+  }
+
   let options = {
     headers
   };
