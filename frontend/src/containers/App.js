@@ -42,7 +42,7 @@ class App extends React.Component {
             );
           }} />
 
-          <Route path="/posts/:id/update" render={(props) => {
+          <Route path="/:category/:id/update" render={(props) => {
             let { match } = props;
             return (
               <React.Fragment>
@@ -52,7 +52,7 @@ class App extends React.Component {
             );
           }} />
 
-          <Route path="/posts/:id" render={(props) => {
+          <Route path="/:category/:id" render={(props) => {
             let { match } = props;
             return (
               <React.Fragment>

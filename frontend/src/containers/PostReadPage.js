@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import PostVoteCounter from '../components/PostVoteCounter';
+import Post from '../components/Post';
 import { readPost } from '../actions/postActions';
 
 
@@ -16,11 +16,8 @@ class PostReadPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div>Post Read Page</div>
-        <PostVoteCounter postId={this.props.postId} voteCount={this.props.voteScore} />
-        <h1>{this.props.title}</h1>
-        <p>{this.props.author}</p>
-        <div>{this.props.body}</div>
+        <h1>Post Read Page</h1>
+        <Post post={this.props} />
       </React.Fragment>
     );
   }
