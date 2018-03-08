@@ -14,12 +14,18 @@ class PostForm extends Component {
       title: '',
       body: '',
       author: '',
-      category: ''
+      category: props.categories[0] || ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCategoryChange = this.handleCategoryChange.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      category: nextProps.categories[0] || ''
+    });
   }
 
   handleInputChange(event) {
