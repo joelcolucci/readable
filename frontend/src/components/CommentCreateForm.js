@@ -43,6 +43,12 @@ class CommentCreateForm extends React.Component {
     };
 
     this.props.dispatch(createComment(comment));
+
+    this.setState({
+      id: uuid(),
+      body: '',
+      author: ''
+    });
   }
 
   render() {
