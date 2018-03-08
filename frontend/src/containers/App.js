@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import { readAllCategories } from '../actions/categoryActions';
 
 import Header from '../components/Header';
-import PostList from '../components/PostList';
 import CategoryList from '../components/CategoryList';
 
+import RootPage from './RootPage';
 import PostCreatePage from './PostCreatePage';
 import PostReadPage from './PostReadPage';
 import PostUpdatePage from './PostUpdatePage';
@@ -27,8 +27,7 @@ class App extends React.Component {
               <div>
                 <Header />
                 <CategoryList categories={this.props.categories}/>
-                <h2>Most recent posts</h2>
-                <PostList />
+                <RootPage />
               </div>
             );
           }} />

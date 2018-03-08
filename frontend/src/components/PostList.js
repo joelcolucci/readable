@@ -1,18 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import { readAllPosts } from '../actions/postActions';
 
 import PostDeleteButton from './PostDeleteButton';
 import PostVoteCounter from './PostVoteCounter';
 
 
 class PostList extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(readAllPosts());
-  }
-
   render() {
     return (
       <div className="postlist">
@@ -34,15 +27,4 @@ class PostList extends React.Component {
 }
 
 
-function mapStateToProps(state) {
-  let { postsReducer } = state;
-  return {
-    posts: Object.keys(postsReducer.postsById).map((key) => {
-      return {...postsReducer.postsById[key]};
-    })
-    .filter((elem) => elem.deleted === false)
-  };
-}
-
-
-export default connect(mapStateToProps)(PostList);
+export default PostList;
