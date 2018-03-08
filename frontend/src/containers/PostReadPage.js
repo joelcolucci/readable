@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import CategoryList from '../components/CategoryList';
+import Header from '../components/Header';
 import Post from '../components/Post';
 import CommentList from '../components/CommentList';
 import CommentCreateForm from '../components/CommentCreateForm';
@@ -20,12 +22,19 @@ class PostReadPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Post Read Page</h1>
-        <Post post={this.props} />
-        <h3>Comments</h3>
-        <CommentList comments={this.props.comments} />
-        <h3>New Comment</h3>
-        <CommentCreateForm postId={this.props.id} />
+        <Header />
+        <main className="main">
+          <div className="post-container">
+            <Post post={this.props} />
+            <h3>Comments</h3>
+            <CommentList comments={this.props.comments} />
+            <h3>New Comment</h3>
+            <CommentCreateForm postId={this.props.id} />
+          </div>
+          <div className="category-list-container">
+            <CategoryList categories={this.props.categories}/>
+          </div>
+        </main>
       </React.Fragment>
     );
   }

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { readAllPosts } from '../actions/postActions';
 
+import CategoryList from '../components/CategoryList';
+import Header from '../components/Header';
 import PostList from '../components/PostList';
 
 
@@ -22,8 +24,16 @@ class CategoryPostsPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h2>Posts by category</h2>
-        <PostList posts={this.props.posts} />
+        <Header />
+        <main className="main">
+          <div className="post-list-container">
+            <h4>Sort by: Votes | Created</h4>
+            <PostList posts={this.props.posts} />
+          </div>
+          <div className="category-list-container">
+            <CategoryList categories={this.props.categories}/>
+          </div>
+        </main>
       </React.Fragment>
     );
   }

@@ -1,13 +1,23 @@
 import React from 'react';
 
+import CategoryList from '../components/CategoryList';
+import Header from '../components/Header';
 import PostCreateForm from '../components/PostCreateForm';
 
 
 function PostCreatePage(props) {
   return (
     <React.Fragment>
-      <h2>Posts editor</h2>
-      <PostCreateForm categories={props.categories} />
+      <Header />
+      <main className="main">
+        <div className="post-form-container">
+          <h4>Create a post</h4>
+          <PostCreateForm categories={props.categories} />
+        </div>
+        <div className="category-list-container">
+          <CategoryList categories={props.categories}/>
+        </div>
+      </main>
     </React.Fragment>
   );
 }

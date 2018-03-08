@@ -25,51 +25,42 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" render={() => {
             return (
-              <React.Fragment>
-                <Header />
-                <CategoryList categories={this.props.categories}/>
-                <RootPage />
-              </React.Fragment>
+              <RootPage
+                categories={this.props.categories} />
             );
           }} />
 
           <Route exact path="/posts/create" render={() => {
             return (
-              <React.Fragment>
-                <Header />
-                <PostCreatePage categories={this.props.categories} />
-              </React.Fragment>
+              <PostCreatePage
+                categories={this.props.categories} />
             );
           }} />
 
           <Route path="/:category/:id/update" render={(props) => {
             let { match } = props;
             return (
-              <React.Fragment>
-                <Header />
-                <PostUpdatePage postId={match.params.id}/>
-              </React.Fragment>
+              <PostUpdatePage
+                postId={match.params.id}
+                categories={this.props.categories} />
             );
           }} />
 
           <Route path="/:category/:id" render={(props) => {
             let { match } = props;
             return (
-              <React.Fragment>
-                <Header />
-                <PostReadPage postId={match.params.id}/>
-              </React.Fragment>
+              <PostReadPage
+                postId={match.params.id}
+                categories={this.props.categories} />
             );
           }} />
 
           <Route exact path="/:category" render={(props) => {
             let { match } = props;
             return (
-              <React.Fragment>
-                <Header />
-                <CategoryList categories={this.props.categories}/>
-                <CategoryPostsPage category={match.params.category} />
-              </React.Fragment>
+              <CategoryPostsPage
+                categories={this.props.categories}
+                category={match.params.category} />
             );
           }} />
         </Switch>

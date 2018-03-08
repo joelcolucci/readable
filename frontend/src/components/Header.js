@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 function Header(props) {
   return (
     <header className="header">
-      <Link to="/">
-        <h1 className="logo">Readable</h1>
-      </Link>
-      <nav className="nav">
-        <Link to="/posts/create" className="nav-item">New Post</Link>
-      </nav>
+      <div className="navbar">
+        <Link to="/" className="link">
+          <h1 className="navbar-brand">Readable</h1>
+        </Link>
+        <span>| All Posts</span>
+      </div>
     </header>
   );
 }

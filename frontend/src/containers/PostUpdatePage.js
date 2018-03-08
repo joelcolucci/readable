@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import PostUpdateForm from '../components/PostUpdateForm';
 import { readPost } from '../actions/postActions';
+
+import CategoryList from '../components/CategoryList';
+import Header from '../components/Header';
+import PostUpdateForm from '../components/PostUpdateForm';
 
 
 class PostUpdatePage extends React.Component {
@@ -16,8 +19,16 @@ class PostUpdatePage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h2>Post Update Page</h2>
-        <PostUpdateForm post={this.props} />
+        <Header />
+        <main className="main">
+          <div className="post-form-container">
+            <h4>Update post</h4>
+            <PostUpdateForm post={this.props} />
+          </div>
+          <div className="category-list-container">
+            <CategoryList categories={this.props.categories}/>
+          </div>
+        </main>
       </React.Fragment>
     );
   }
