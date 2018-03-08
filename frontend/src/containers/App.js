@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import CategoryList from '../components/CategoryList';
 
 import RootPage from './RootPage';
+import CategoryPostsPage from './CategoryPostsPage';
 import PostCreatePage from './PostCreatePage';
 import PostReadPage from './PostReadPage';
 import PostUpdatePage from './PostUpdatePage';
@@ -57,6 +58,17 @@ class App extends React.Component {
               <React.Fragment>
                 <Header />
                 <PostReadPage postId={match.params.id}/>
+              </React.Fragment>
+            );
+          }} />
+
+          <Route exact path="/:category" render={(props) => {
+            let { match } = props;
+            return (
+              <React.Fragment>
+                <Header />
+                <CategoryList categories={this.props.categories}/>
+                <CategoryPostsPage category={match.params.category} />
               </React.Fragment>
             );
           }} />
