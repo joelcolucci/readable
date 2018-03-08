@@ -2,6 +2,7 @@ import React from 'react';
 
 import Comment from './Comment.js';
 import CommentUpdateForm from './CommentUpdateForm';
+import CommentDeleteButton from './CommentDeleteButton';
 
 
 function CommentList(props) {
@@ -12,6 +13,7 @@ function CommentList(props) {
           <div key={comment.id}>
             <Comment comment={comment} />
             <CommentUpdateForm comment={comment} />
+            <CommentDeleteButton commentId={comment.id} />
           </div>
         );
       })}

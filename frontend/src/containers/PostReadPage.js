@@ -38,7 +38,7 @@ function mapStateToProps(state, ownProps) {
   return {
     id: post.id,
     ...post,
-    comments: state.commentReducer.comments
+    comments: state.commentReducer.comments.filter((value) => value.deleted === false)
   };
 }
 

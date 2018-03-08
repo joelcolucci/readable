@@ -129,13 +129,18 @@ function commentReducer(previousState=initialState, action) {
         isFetching: false
       };
 
-    case COMMENT_DELETE_SUCCESS:
+    case COMMENT_DELETE_SUCCESS: {
+      let previousComments = previousState
+        .comments.filter((value) => value.id !== action.comment.id);
+
       return {
         ...previousState,
         comments: [
+          ...previousComments,
           action.comment
         ]
       };
+    }
 
     case COMMENT_VOTE_REQUEST:
       return {
