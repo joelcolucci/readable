@@ -37,7 +37,7 @@ class App extends React.Component {
             return (
               <React.Fragment>
                 <Header />
-                <PostCreatePage />
+                <PostCreatePage categories={this.props.categories} />
               </React.Fragment>
             );
           }} />

@@ -19,6 +19,7 @@ class PostForm extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCategoryChange = this.handleCategoryChange.bind(this);
   }
 
   handleInputChange(event) {
@@ -27,6 +28,13 @@ class PostForm extends Component {
 
     this.setState({
       [inputName]: inputValue
+    });
+  }
+
+  handleCategoryChange(event) {
+    let category = event.target.value;
+    this.setState({
+      category: category
     });
   }
 
@@ -82,8 +90,10 @@ class PostForm extends Component {
           value={this.state.author}
           onChange={this.handleInputChange} />
 
-        <select>
-          <option>TODO: Categories</option>
+        <select name="category" onChange={this.handleCategoryChange}>
+          {this.props.categories.map((elem) => {
+            return <option key={elem} value={elem}>{elem}</option>;
+          })}
         </select>
 
         <button type="submit">Save</button>

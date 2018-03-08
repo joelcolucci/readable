@@ -3,11 +3,11 @@ import React from 'react';
 import PostCreateForm from '../components/PostCreateForm';
 
 
-function PostCreatePage() {
+function PostCreatePage(props) {
   return (
     <React.Fragment>
       <h2>Posts editor</h2>
-      <PostCreateForm />
+      <PostCreateForm categories={props.categories} />
     </React.Fragment>
   );
 }
