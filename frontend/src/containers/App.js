@@ -21,15 +21,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="app">
+      <React.Fragment>
         <Switch>
           <Route exact path="/" render={() => {
             return (
-              <div>
+              <React.Fragment>
                 <Header />
                 <CategoryList categories={this.props.categories}/>
                 <RootPage />
-              </div>
+              </React.Fragment>
             );
           }} />
 
@@ -73,7 +73,7 @@ class App extends React.Component {
             );
           }} />
         </Switch>
-      </div>
+      </React.Fragment>
     );
   }
 }
@@ -88,5 +88,6 @@ function mapStateToProps(state, ownProps) {
     categories: categories
   };
 }
+
 
 export default withRouter(connect(mapStateToProps)(App));
