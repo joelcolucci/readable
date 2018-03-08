@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 
 import { readAllCategories } from '../actions/categoryActions';
 
-import Header from '../components/Header';
-import CategoryList from '../components/CategoryList';
-
 import RootPage from './RootPage';
 import CategoryPostsPage from './CategoryPostsPage';
 import PostCreatePage from './PostCreatePage';
