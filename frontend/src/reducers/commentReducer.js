@@ -155,15 +155,17 @@ function commentReducer(previousState=initialState, action) {
       };
 
     case COMMENT_VOTE_SUCCESS: {
-        let post = action.post;
-        return {
-          ...previousState,
-          postsById: {
-            ...previousState.postsById,
-            [post.id]: post
-          }
-        };
-      }
+      let previousComments = previousState
+        .comments.filter((value) => value.id !== action.comment.id);
+
+      return {
+        ...previousState,
+        comments: [
+          ...previousComments,
+          action.comment
+        ]
+      };
+    }
 
     default:
       return previousState;
