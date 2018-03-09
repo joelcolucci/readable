@@ -24,7 +24,7 @@ class CommentDeleteButton extends React.Component {
 
   render() {
     return (
-      <button onClick={this.handleClick}>Delete</button>
+      <button onClick={this.handleClick} className="link">Delete</button>
     );
   }
 }

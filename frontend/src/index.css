@@ -104,7 +104,6 @@ button {
 
 
 /* CATEGORY LIST */
-
 .category-list {
   background: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
@@ -209,4 +208,49 @@ button {
   color: #FF4403;
   display: inline-block;
   font-size: 28px;
+}
+
+
+
+/* COMMENTS */
+.comment {
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  height: 140px;
+  margin: 10px 0;
+  padding: 15px 55px 15px 0;
+  position: relative;
+}
+
+.comment-flex {
+  display: flex;
+}
+
+.comment-vote-counter {
+  align-self: center;
+}
+
+.comment-controls {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.comment-sub-title {
+  color: #707070;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.comment-body {
+  color: #707070;
+  margin: 10px 0;
+  height: 90px;
+  overflow-y: scroll;
+}
+
+.comment-meta {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
 }
