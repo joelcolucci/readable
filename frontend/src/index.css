@@ -284,3 +284,19 @@ button {
   padding: 10px 0;
   text-transform: uppercase;
 }
+
+
+/* ADD BUTTON */
+.add-button {
+  border-radius: 50%;
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  overflow: hidden;
+  padding: 20px 24px;
+  text-decoration: none;
+  background: #FF4403;
+  color: #fff;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+}

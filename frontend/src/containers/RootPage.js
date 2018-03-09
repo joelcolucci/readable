@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { readAllPosts } from '../actions/postActions';
 
@@ -24,8 +25,9 @@ class RootPage extends React.Component {
           </div>
           <div className="category-list-container">
             <CategoryList categories={this.props.categories}/>
-          </div>
+          </div>          
         </main>
+        <Link to="/posts/create" className="add-button">+</Link>
       </React.Fragment>
     );
   }
