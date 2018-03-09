@@ -254,3 +254,33 @@ button {
   bottom: 15px;
   right: 20px;
 }
+
+
+
+/* COMMENT FORM */
+.comment-form {
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  height: 175px;
+  margin: 10px 0;
+  padding: 15px 10px;
+}
+
+.comment-form .textarea {
+  width: 100%;
+  border: 1px solid #eaeaea;
+  height: 80px;
+  padding: 10px;
+}
+
+.comment-form .input {
+  width: 100%;
+  border: 1px solid #eaeaea;
+  padding: 10px;
+}
+
+.create-form-controls {
+  text-align: right;
+  padding: 10px 0;
+  text-transform: uppercase;
+}

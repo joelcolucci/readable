@@ -53,27 +53,31 @@ class CommentCreateForm extends React.Component {
 
   render() {
     return (
-      <form className="comment-create-form" onSubmit={this.handleSubmit}>
+      <form className="comment-form" onSubmit={this.handleSubmit}>
         <input
           type="hidden"
           name="id"
           value={this.state.postId} />
 
-        <input
+        <textarea
+          className="textarea"
           type="text"
           name="body"
           placeholder="body"
           value={this.state.body}
-          onChange={this.handleInputChange} />
+          onChange={this.handleInputChange}></textarea>
 
         <input
+          className="input"
           type="text"
           name="author"
           placeholder="author"
           value={this.state.author}
           onChange={this.handleInputChange} />
 
-        <button type="submit">Save</button>
+        <div className="create-form-controls">
+          <button type="submit" className="link">Save</button>
+        </div>
       </form>
     );
   }
