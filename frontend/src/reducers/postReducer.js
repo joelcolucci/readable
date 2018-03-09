@@ -16,16 +16,17 @@ import {
   POST_UPDATE_SUCCESS,
   POST_VOTE_REQUEST,
   POST_VOTE_ERROR,
-  POST_VOTE_SUCCESS
+  POST_VOTE_SUCCESS,
+  POST_SORT_POSTS
 } from '../actions/postActions';
 
 
 const initialState = {
   postsById: {},
-  isFetching: false
+  isFetching: false,
+  sortBy: 'created'
 };
 
-// "Selectors" are used in mapStateToProps
 
 function postsReducer(previousState=initialState, action) {
   switch (action.type) {
@@ -167,6 +168,12 @@ function postsReducer(previousState=initialState, action) {
           }
         };
       }
+
+    case POST_SORT_POSTS:
+      return {
+        ...previousState,
+        sortBy: action.sortBy
+      };
 
     default:
       return previousState;

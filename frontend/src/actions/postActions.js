@@ -226,3 +226,14 @@ export const updateVoteScore = (vote) => {
       });
   };
 };
+
+
+/** SORT */
+export const POST_SORT_POSTS = 'POST_SORT_POSTS';
+
+export const sortPosts = (sortField) => {
+  return {
+    type: POST_SORT_POSTS,
+    sortBy: sortField
+  };
+};
