@@ -68,41 +68,52 @@ class PostCreateForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="hidden"
-          name="id"
-          value={this.state.postId}
-          onChange={this.handleInputChange} />
+      <form onSubmit={this.handleSubmit} className="post-form">
+        <div className="form-group">
+          <h4 className="form-group-heading">Content</h4>
+          <input
+            type="hidden"
+            name="id"
+            value={this.state.postId}
+            onChange={this.handleInputChange} />
 
-        <input
-          type="text"
-          name="title"
-          placeholder="title"
-          value={this.state.title}
-          onChange={this.handleInputChange} />
+          <input
+            className="input"
+            type="text"
+            name="title"
+            placeholder="title"
+            value={this.state.title}
+            onChange={this.handleInputChange} />
 
-        <input
-          type="text"
-          name="body"
-          placeholder="body"
-          value={this.state.body}
-          onChange={this.handleInputChange} />
+          <textarea
+            className="textarea"
+            type="text"
+            name="body"
+            placeholder="body"
+            value={this.state.body}
+            onChange={this.handleInputChange}></textarea>
 
-        <input
-          type="text"
-          name="author"
-          placeholder="author"
-          value={this.state.author}
-          onChange={this.handleInputChange} />
+          <input
+            className="input"
+            type="text"
+            name="author"
+            placeholder="author"
+            value={this.state.author}
+            onChange={this.handleInputChange} />
+        </div>
 
-        <select name="category" onChange={this.handleCategoryChange}>
-          {this.props.categories.map((elem) => {
-            return <option key={elem} value={elem}>{elem}</option>;
-          })}
-        </select>
+        <div className="form-group">
+          <h4 className="form-group-heading">Category</h4>
+          <select className="select" name="category" onChange={this.handleCategoryChange}>
+            {this.props.categories.map((elem) => {
+              return <option key={elem} value={elem}>{elem}</option>;
+            })}
+          </select>
+        </div>
 
-        <button type="submit">Save</button>
+        <div className="post-form-controls">
+          <button type="submit" className="link">Save</button>
+        </div>
       </form>
     );
   }
