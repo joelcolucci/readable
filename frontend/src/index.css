@@ -256,6 +256,9 @@ button {
   margin: 0 0 10px;
 }
 
+input[disabled] {
+  background: #eaeaea;
+}
 
 
 /* COMMENTS */

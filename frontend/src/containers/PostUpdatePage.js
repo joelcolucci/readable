@@ -42,7 +42,8 @@ function mapStateToProps(state, ownProps) {
     id: post.id,
     title: post.title || '',
     author: post.author || '',
-    body: post.body || ''
+    body: post.body || '',
+    category: post.category || ''
   };
 }
 
