@@ -92,6 +92,15 @@ button {
   width: 200px;
 }
 
+.page-post-read .post,
+.page-post-read .post-body {
+  height: auto;
+}
+
+.page-post-read .category-list-container {
+  margin-top: 10px;
+}
+
 
 
 /* CATEGORY LIST */

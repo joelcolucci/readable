@@ -23,7 +23,7 @@ class PostReadPage extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <main className="main">
+        <main className="main page-post-read">
           <div className="post-container">
             <Post post={this.props} />
             <h3>Comments</h3>
