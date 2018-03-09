@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
+
 import CategoryList from '../components/CategoryList';
 import Header from '../components/Header';
 import Post from '../components/Post';
@@ -20,20 +22,31 @@ class PostReadPage extends React.Component {
   }
 
   render() {
+    if (!this.props.post.id) {
+      return (
+        <div style={{textAlign: 'center'}}>
+          <h1>404</h1>
+          <Link className="link" to="/">Return to home page</Link>
+        </div>
+      );
+    }
+
     return (
       <React.Fragment>
         <Header />
         <main className="main page-post-read">
+
           <div className="post-container">
-            <Post post={this.props} />
+            <Post post={this.props.post} />
             <h3>Comments</h3>
             <CommentList comments={this.props.comments} />
             <h3>New Comment</h3>
-            <CommentCreateForm postId={this.props.id} />
+            <CommentCreateForm postId={this.props.post.id} />
           </div>
           <div className="category-list-container">
             <CategoryList categories={this.props.categories}/>
           </div>
+
         </main>
       </React.Fragment>
     );
@@ -44,7 +57,7 @@ class PostReadPage extends React.Component {
 function mapStateToProps(state, ownProps) {
   let { commentReducer, postsReducer } = state;
 
-  let comments = commentReducer.comments.filter((value) => value.deleted === false);
+  let comments = commentReducer.comments.filter((value) => value.deleted === false && value.parentDeleted === false);
   let post = postsReducer.postsById[ownProps.postId] || {};
 
   // Update commentCount to ensure accurate # as comments are added/deleted
@@ -54,7 +67,7 @@ function mapStateToProps(state, ownProps) {
 
   return {
     id: post.id,
-    ...post,
+    post: post,
     comments: comments.sort((a, b) => a.timestamp < b.timestamp)
   };
 }

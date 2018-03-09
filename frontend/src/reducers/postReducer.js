@@ -91,13 +91,17 @@ function postsReducer(previousState=initialState, action) {
   
     case POST_READ_SUCCESS: {
       let post = action.post;
-      return {
-        ...previousState,
-        postsById: {
-          ...previousState.postsById,
-          [post.id]: post
-        }
-      };
+      if (post.id) {
+        return {
+          ...previousState,
+          postsById: {
+            ...previousState.postsById,
+            [post.id]: post
+          }
+        };
+      } else {
+        return previousState;
+      }
     }
 
     case POST_UPDATE_REQUEST:
