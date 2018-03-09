@@ -55,7 +55,7 @@ function mapStateToProps(state, ownProps) {
   return {
     id: post.id,
     ...post,
-    comments: comments
+    comments: comments.sort((a, b) => a.timestamp < b.timestamp)
   };
 }
 
