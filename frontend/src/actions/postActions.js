@@ -1,3 +1,5 @@
+import { push } from 'react-router-redux';
+
 import * as PostAPI from '../utilities/PostAPI';
 
 
@@ -33,6 +35,7 @@ export const createPost = (post) => {
     return PostAPI
       .create(post)
       .then((post) => {
+        dispatch(push('/'));
         dispatch(postCreateSuccess(post));
       });
   };
@@ -143,6 +146,7 @@ export const updatePost = (post) => {
     return PostAPI
       .update(post)
       .then((post) => {
+        dispatch(push('/'));
         dispatch(postUpdateSuccess(post));
       });
   };
@@ -180,6 +184,7 @@ export const deletePost = (postId) => {
     return PostAPI
       .remove(postId)
       .then((post) => {
+        dispatch(push('/'));
         dispatch(postDeleteSuccess(post));
       });
   };
