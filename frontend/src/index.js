@@ -1,21 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { createStore, applyMiddleware, compose } from 'redux';
+
+import createHistory from 'history/createBrowserHistory';
+import {
+  ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
+
 import thunk from 'redux-thunk';
 
 import App from './containers/App';
-import rootReducer from './reducers';
+import reducers from './reducers';
 import './index.css';
+
+
+const history = createHistory();
+// Build middleware for intercepting and dispatching navigation actions
+const historyMiddleware = routerMiddleware(history);
+
+let middleware = [historyMiddleware, thunk];
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-
-let middleware = [thunk];
-
 const store = createStore(
-  rootReducer,
+  combineReducers({
+    ...reducers,
+    router: routerReducer
+  }),
   composeEnhancers(
     applyMiddleware(...middleware)
   )
@@ -23,9 +35,9 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
       <App />
-    </BrowserRouter>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );
