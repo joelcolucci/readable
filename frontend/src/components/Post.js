@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import TimeAgo from 'react-timeago';
+
 import PostDeleteButton from './PostDeleteButton';
 import PostVoteCounter from './PostVoteCounter';
 
@@ -20,7 +22,7 @@ function Post(props) {
             <h2 className="post-title">{post.title}</h2>
           </Link>
 
-          <p className="post-sub-title">Submitted 3h ago by {post.author}</p>
+          <p className="post-sub-title">Submitted <TimeAgo date={post.timestamp} live={false} /> by {post.author}</p>
 
           <p className="post-body">{post.body}</p>
 
