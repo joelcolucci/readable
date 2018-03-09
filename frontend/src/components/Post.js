@@ -8,16 +8,29 @@ import PostVoteCounter from './PostVoteCounter';
 function Post(props) {
   let { post } = props;
   return (
-    <article>
-      <Link to={`/${post.category}/${post.id}`}>
-        <h2>{post.title}</h2>
-      </Link>
-      <p>Written by: {post.author}</p>
-      <p>{post.commentCount} comments</p>
-      <PostVoteCounter postId={post.id} voteCount={post.voteScore} />
-      <Link to={`/${post.category}/${post.id}/update`}>Edit</Link>
-      <PostDeleteButton postId={post.id} />
-      <p>{post.body}</p>
+    <article className="post">
+      <div className="post-flex">
+        <div className="post-vote-counter">
+          <PostVoteCounter
+            postId={post.id}
+            voteCount={post.voteScore} />
+        </div>
+        <div>
+          <Link className="link" to={`/${post.category}/${post.id}`}>
+            <h2 className="post-title">{post.title}</h2>
+          </Link>
+
+          <p className="post-sub-title">Submitted 3h ago by {post.author}</p>
+
+          <p className="post-body">{post.body}</p>
+
+          <p className="post-comment-count">{post.commentCount} comments</p>
+        </div>
+      </div>
+      <div className="post-controls">
+        <Link className="link" to={`/${post.category}/${post.id}/update`}>Edit</Link>
+        <PostDeleteButton postId={post.id} />
+      </div>
     </article>
   );
 }

@@ -1,4 +1,10 @@
 /* GENERAL */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
   background: #eaeaea;
   color: #404040;
@@ -14,9 +20,25 @@ h4 {
   font-weight: 400;
 }
 
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
 .link {
+  background: transparent;
+  border: none;
   color: #FF4403;
+  cursor: pointer;
+  font-size: 14px;
+  outline: none;
   text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 
 
@@ -62,15 +84,18 @@ h4 {
 .post-form-container,
 .post-list-container {
   width: 800px;
+  margin-right: 20px;
 }
 
 .category-list-container {
+  margin-top: 60px;
   width: 200px;
 }
 
 
 
 /* CATEGORY LIST */
+
 .category-list {
   background: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
@@ -98,4 +123,81 @@ h4 {
   font-size: 16px;
   font-weight: bold;
   padding: 10px 0;
+}
+
+
+
+/* POST */
+.post {
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  height: 180px;
+  margin: 10px 0;
+  padding: 15px 55px 15px 0;
+  position: relative;
+}
+
+.post-flex {
+  display: flex;
+}
+
+.post-vote-counter {
+  align-self: center;
+}
+
+.post-controls {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.post-title {
+  margin: 5px 0;
+  max-width: 610px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post-sub-title {
+  color: #707070;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.post-body {
+  color: #707070;
+  height: 50px;
+  overflow: hidden;
+}
+
+.post-comment-count {
+  color: #707070;
+  font-size: 14px;
+}
+
+
+
+/* VOTE COUNTER */
+.vote-counter {
+  display: flex;
+  flex-direction: column;
+  width: 55px;
+  align-items: center;
+}
+
+.vote-counter-count {
+  color: #707070;
+  display: inline-block;
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+
+
+/* ICON */
+.icon-arrow {
+  color: #FF4403;
+  display: inline-block;
+  font-size: 28px;
 }

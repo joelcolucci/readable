@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import UpArrowIcon from 'react-icons/lib/md/arrow-upward';
+import DownArrowIcon from 'react-icons/lib/md/arrow-downward';
+
 import { updateVoteScore } from '../actions/postActions';
 
 
@@ -36,10 +39,14 @@ class PostVoteCounter extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.props.voteCount}
-        <button onClick={this.handleUpVoteClick}>Up vote</button>
-        <button onClick={this.handleDownVoteClick}>Down vote</button>
+      <div className="vote-counter">
+        <button onClick={this.handleUpVoteClick}>
+          <UpArrowIcon className="icon-arrow" />
+        </button>
+        <span className="vote-counter-count">{this.props.voteCount}</span>
+        <button onClick={this.handleDownVoteClick}>
+          <DownArrowIcon className="icon-arrow" />
+        </button>
       </div>
     );
   }
