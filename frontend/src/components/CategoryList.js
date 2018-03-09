@@ -7,17 +7,18 @@ function CategoryList(props) {
     <div className="category-list">
       <h2 className="category-list-heading">Categories</h2>
       <ul className="category-list-items">
-      {
-        props.categories.map((category) => {
-          return (
-            <li key={category} className="category-list-item">
-              <Link
-                to={`/${category}`}
-                className="link">{category}</Link>
-            </li>
-          );
-        })
-      }
+        <li className="category-list-item"><Link to="/" className="link">View all</Link></li>
+        {
+          props.categories.map((category) => {
+            return (
+              <li key={category} className="category-list-item">
+                <Link
+                  to={`/${category}`}
+                  className="link">{category}</Link>
+              </li>
+            );
+          })
+        }
       </ul>
     </div>
   );
