@@ -12,8 +12,7 @@ class CommentCreateForm extends React.Component {
     this.state = {
       id: uuid(),
       body: '',
-      author: '',
-      parentId: props.postId
+      author: ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -39,7 +38,7 @@ class CommentCreateForm extends React.Component {
       timestamp: Date.now(),
       body: this.state.body,
       author: this.state.author,
-      parentId: this.state.parentId
+      parentId: this.props.postId
     };
 
     this.props.dispatch(createComment(comment));
@@ -54,11 +53,6 @@ class CommentCreateForm extends React.Component {
   render() {
     return (
       <form className="comment-form" onSubmit={this.handleSubmit}>
-        <input
-          type="hidden"
-          name="id"
-          value={this.state.postId} />
-
         <textarea
           className="textarea"
           type="text"
