@@ -42,12 +42,20 @@ class PostReadPage extends React.Component {
 
 
 function mapStateToProps(state, ownProps) {
-  let { postsReducer } = state;
+  let { commentReducer, postsReducer } = state;
+
+  let comments = commentReducer.comments.filter((value) => value.deleted === false);
   let post = postsReducer.postsById[ownProps.postId] || {};
+
+  // Update commentCount to ensure accurate # as comments are added/deleted
+  if (comments.length !== post.commentCount) {
+    post.commentCount = comments.length;
+  }
+
   return {
     id: post.id,
     ...post,
-    comments: state.commentReducer.comments.filter((value) => value.deleted === false)
+    comments: comments
   };
 }
 
