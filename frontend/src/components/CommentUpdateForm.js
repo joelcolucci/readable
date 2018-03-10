@@ -44,20 +44,21 @@ class CommentUpdateForm extends React.Component {
 
   render() {
     return (
-      <form className="comment-create-form" onSubmit={this.handleSubmit}>
+      <form className="comment-update-form" onSubmit={this.handleSubmit}>
         <input
           type="hidden"
           name="id"
           value={this.state.postId} />
 
         <input
+          className="input"
           type="text"
           name="body"
           placeholder="body"
           value={this.state.body}
           onChange={this.handleInputChange} />
 
-        <button type="submit">Save</button>
+        <button type="submit" className="link">Save</button>
       </form>
     );
   }
