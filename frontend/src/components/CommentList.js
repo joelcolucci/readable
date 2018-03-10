@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Comment from './Comment.js';
-import CommentUpdateForm from './CommentUpdateForm';
 
 
 function CommentList(props) {
@@ -11,7 +10,6 @@ function CommentList(props) {
         return (
           <div key={comment.id}>
             <Comment comment={comment} />
-            <CommentUpdateForm comment={comment} />
           </div>
         );
       })}
