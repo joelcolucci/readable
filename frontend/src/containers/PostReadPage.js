@@ -24,10 +24,13 @@ class PostReadPage extends React.Component {
   render() {
     if (!this.props.post.id) {
       return (
-        <div style={{textAlign: 'center'}}>
-          <h1>404</h1>
-          <Link className="link" to="/">Return to home page</Link>
-        </div>
+        <React.Fragment>
+          <Header />
+          <main className="main page-404">
+            <h1>404</h1>
+            <Link className="link" to="/">Return to home page</Link>
+          </main>
+        </React.Fragment>
       );
     }
 

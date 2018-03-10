@@ -101,6 +101,10 @@ button {
   margin-top: 10px;
 }
 
+.page-404 {
+  display: block;
+  text-align: center;
+}
 
 
 /* CATEGORY LIST */
