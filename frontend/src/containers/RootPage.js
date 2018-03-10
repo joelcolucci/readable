@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { readAllPosts, sortPosts } from '../actions/postActions';
+import {
+  readAllPosts,
+  sortPosts,
+  getSortedPosts } from '../actions/postActions';
 
 import CategoryList from '../components/CategoryList';
 import Header from '../components/Header';
@@ -46,19 +49,8 @@ class RootPage extends React.Component {
 
 
 function mapStateToProps(state) {
-  let { postsReducer } = state;
   return {
-    posts: Object.keys(postsReducer.postsById).map((key) => {
-      return {...postsReducer.postsById[key]};
-    })
-    .filter((elem) => elem.deleted === false)
-    .sort((a, b) => {
-      if (postsReducer.sortBy === 'created') {
-        return a.timestamp < b.timestamp;
-      } else {
-        return a.voteScore < b.voteScore;
-      }
-    })
+    posts: getSortedPosts(state)
   };
 }
 

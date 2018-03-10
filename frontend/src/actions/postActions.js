@@ -237,3 +237,25 @@ export const sortPosts = (sortField) => {
     sortBy: sortField
   };
 };
+
+
+/** SELECTORS */
+
+export const getSortedPosts = (state) => {
+  let { postsReducer } = state;
+  return Object
+    .keys(postsReducer.postsById)
+    .map((key) => {
+      return {...postsReducer.postsById[key]};
+    })
+    .filter((elem) => elem.deleted === false)
+    .sort((a, b) => {
+      if (postsReducer.sortBy === 'created') {
+        return a.timestamp < b.timestamp;
+      } else {
+        return a.voteScore < b.voteScore;
+      }
+    });
+};
+
+
