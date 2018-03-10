@@ -9,7 +9,7 @@ function Header(props) {
         <Link to="/" className="link">
           <h1 className="navbar-brand">Readable</h1>
         </Link>
-        <span>| All Posts</span>
+        <span>| {props.title}</span>
       </div>
     </header>
   );

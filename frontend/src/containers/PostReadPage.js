@@ -25,7 +25,7 @@ class PostReadPage extends React.Component {
     if (!this.props.post.id) {
       return (
         <React.Fragment>
-          <Header />
+          <Header title="Whoops! Page not found ;)"/>
           <main className="main page-404">
             <h1>404</h1>
             <Link className="link" to="/">Return to home page</Link>
@@ -36,7 +36,7 @@ class PostReadPage extends React.Component {
 
     return (
       <React.Fragment>
-        <Header />
+        <Header title="View post"/>
         <main className="main page-post-read">
 
           <div className="post-container">

@@ -8,7 +8,7 @@ import PostCreateForm from '../components/PostCreateForm';
 function PostCreatePage(props) {
   return (
     <React.Fragment>
-      <Header />
+      <Header title="Create a post" />
       <main className="main">
         <div className="post-form-container">
           <h4>Create a post</h4>

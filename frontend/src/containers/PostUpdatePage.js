@@ -19,7 +19,7 @@ class PostUpdatePage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
+        <Header title="Update post"/>
         <main className="main">
           <div className="post-form-container">
             <h4>Update post</h4>

@@ -24,7 +24,7 @@ class RootPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
+        <Header title="All posts" />
         <main className="main">
           <div className="post-list-container">
             <h4>Sort by:
